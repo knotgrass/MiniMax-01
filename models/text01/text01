@@ -1,0 +1,30 @@
+MiniMaxText01ForCausalLM(
+  (model): MiniMaxText01Model(
+    (embed_tokens): Embedding(200064, 6144)
+    (layers): ModuleList(
+      (0-79): 80 x MiniMaxText01DecoderLayer(
+        (self_attn): MiniMaxText01LightningAttention(
+          (out_proj): Linear(in_features=8192, out_features=6144, bias=False)
+          (norm): MiniMaxText01RMSNorm()
+          (qkv_proj): Linear(in_features=6144, out_features=24576, bias=False)
+          (output_gate): Linear(in_features=6144, out_features=8192, bias=False)
+        )
+        (block_sparse_moe): MiniMaxText01SparseMoeBlock(
+          (gate): Linear(in_features=6144, out_features=32, bias=False)
+          (experts): ModuleList(
+            (0-31): 32 x MiniMaxText01BlockSparseTop2MLP(
+              (w1): Linear(in_features=6144, out_features=9216, bias=False)
+              (w2): Linear(in_features=9216, out_features=6144, bias=False)
+              (w3): Linear(in_features=6144, out_features=9216, bias=False)
+              (act_fn): SiLU()
+            )
+          )
+        )
+        (input_layernorm): MiniMaxText01RMSNorm()
+        (post_attention_layernorm): MiniMaxText01RMSNorm()
+      )
+    )
+    (norm): MiniMaxText01RMSNorm()
+  )
+  (lm_head): Linear(in_features=6144, out_features=200064, bias=False)
+)
